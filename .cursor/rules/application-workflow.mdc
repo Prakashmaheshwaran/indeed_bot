@@ -1,0 +1,35 @@
+---
+globs: indeed_apply.py
+description: Job application functionality with question answering
+---
+
+# Job Application Workflow
+
+## indeed_apply.py
+- Reads jobs from `temp_jobs.csv` (created by scraper)
+- Applies to each job using browser automation
+- Handles multi-step application forms
+- Uses intelligent question answering system
+- Updates progress and learns from applications
+
+## Question Answering System
+- **Bank First**: Uses stored Q&A pairs for speed
+- **AI Fallback**: Calls OpenRouter API for new questions
+- **Learning**: Saves AI answers to `questions_bank.json`
+- **Modes**: stored_only, hybrid, ai_only
+
+## Configuration
+```yaml
+question_answering:
+  enabled: true
+  mode: "hybrid"  # stored_only | hybrid | ai_only
+  on_unknown_question: "ai_then_skip"
+  openrouter:
+    api_key: "your_key"
+    model: "anthropic/claude-3.5-sonnet"
+```
+
+## Files Used
+- `temp_jobs.csv` - Input job list
+- `questions_bank.json` - Q&A storage (updated)
+- `progress.json` - Application tracking (updated)

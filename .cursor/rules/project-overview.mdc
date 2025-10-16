@@ -1,0 +1,24 @@
+---
+alwaysApply: true
+description: Main project structure and workflow overview
+---
+
+# Indeed Bot - Split Architecture
+
+## Project Structure
+- **`indeed_scrape.py`** - Scrapes Indeed jobs from multiple URLs to CSV
+- **`indeed_apply.py`** - Applies to jobs from CSV using question answering
+- **`config.yaml`** - Configuration for URLs, timing, and question answering
+- **`questions_bank.json`** - Stores Q&A pairs for application forms
+- **`progress.json`** - Tracks applied/failed jobs and statistics
+
+## Workflow
+1. Configure multiple URLs in `config.yaml`
+2. Run `python indeed_scrape.py` → Creates `temp_jobs.csv`
+3. Run `python indeed_apply.py` → Applies to jobs from CSV
+
+## Key Features
+- Multi-URL scraping with deduplication
+- Intelligent question answering (bank + AI)
+- Progress tracking and resume capability
+- Temporary CSV storage (wiped each scrape)

@@ -1,0 +1,29 @@
+---
+globs: indeed_scrape.py
+description: Job scraping functionality and CSV generation
+---
+
+# Job Scraping Workflow
+
+## indeed_scrape.py
+- Reads multiple URLs from `config.yaml` search.urls
+- Scrapes pages `start` to `end` for each URL
+- Finds jobs with "Indeed Apply" buttons only
+- Deduplicates across all URLs
+- Filters out already processed jobs
+- Saves new jobs to `temp_jobs.csv` (wiped each run)
+- Updates `progress.json` with scraping stats
+
+## Configuration
+```yaml
+search:
+  urls:
+    - "https://www.indeed.com/jobs?q=python&l=remote"
+    - "https://www.indeed.com/jobs?q=javascript&l=remote"
+  start: 0
+  end: 10  # Pages per URL
+```
+
+## Output Files
+- `temp_jobs.csv` - Job URLs, IDs, and scrape timestamps
+- `progress.json` - Updated with scraping statistics

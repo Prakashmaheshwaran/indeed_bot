@@ -1,0 +1,32 @@
+---
+globs: config.yaml,questions_bank.json,progress.json,temp_jobs.csv
+description: Configuration and data file structure
+---
+
+# Configuration & Data Files
+
+## config.yaml
+- **URLs**: `search.urls` array for multiple job searches
+- **Browser**: `camoufox` settings for automation
+- **Timing**: `timing` delays for human-like behavior
+- **Question Answering**: `question_answering` settings and API keys
+- **Resume Context**: `resume_context` for AI question answering
+
+## questions_bank.json
+- Stores Q&A pairs for application forms
+- **Structure**: question, answer, keywords, usage stats
+- **Sources**: manual, ai, bank (for tracking)
+- **Auto-updated** by application process
+
+## progress.json
+- **Applied Jobs**: List of successfully applied job URLs
+- **Failed Jobs**: List of failed application URLs
+- **Statistics**: Total counts and success rates
+- **Question Stats**: Q&A usage statistics
+- **Resume**: Prevents duplicate applications
+
+## temp_jobs.csv
+- **Temporary storage** for scraped job URLs
+- **Wiped each scrape** - not for permanent storage
+- **Format**: job_url, job_id, scraped_at
+- **Used by**: `indeed_apply.py` for job application

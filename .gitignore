@@ -207,15 +207,8 @@ __marimo__/
 *.swp
 
 # indeed_bot specific files
-# These contain personal data and should not be tracked in git
 logs.txt
 user_data_dir/
-progress.json          # Tracks applied jobs and personal statistics
-questions_bank.json    # Contains personal Q&A data
-config.yaml            # Contains API keys and personal settings
-*.log
-
-
-config.yaml
-progress.json
-questions_bank.json
+csv/
+logs/
+data/

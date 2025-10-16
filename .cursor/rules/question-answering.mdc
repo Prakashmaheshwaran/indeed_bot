@@ -1,0 +1,38 @@
+---
+globs: *apply*.py,questions_bank.json
+description: Intelligent question answering system for job applications
+---
+
+# Question Answering System
+
+## How It Works
+1. **Detection**: Finds form fields with associated labels
+2. **Bank Lookup**: Searches `questions_bank.json` for similar questions
+3. **AI Fallback**: Uses OpenRouter API for new questions
+4. **Learning**: Saves AI answers to bank for future use
+5. **Filling**: Automatically fills form fields
+
+## Question Types Supported
+- **Text inputs** and **textareas**
+- **Select dropdowns** (fuzzy option matching)
+- **Radio buttons** (fuzzy label matching)
+
+## Matching Algorithm
+- **Fuzzy Text Matching**: 70% weight on question similarity
+- **Keyword Overlap**: 30% weight on extracted keywords
+- **Threshold**: 80% similarity for matches
+
+## Configuration Modes
+- `stored_only`: Only use question bank, skip unknowns
+- `hybrid`: Try bank first, then AI (recommended)
+- `ai_only`: Always use AI, still saves to bank
+
+## Unknown Question Handling
+- `pause_and_beep`: Alert user for manual input
+- `ai_then_skip`: Try AI, skip if fails
+- `skip_immediately`: Skip without AI
+
+## Cost & Performance
+- **Bank answers**: Instant (< 0.1s)
+- **AI answers**: 1-3 seconds + API cost (~$0.001-0.01)
+- **Learning**: Reduces future API calls
