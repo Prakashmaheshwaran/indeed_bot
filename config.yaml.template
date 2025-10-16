@@ -1,0 +1,60 @@
+# Indeed Auto-Apply Bot Configuration Template
+# Copy this file to config.yaml and fill in your actual values
+
+search:
+  base_url: "https://www.indeed.com/jobs?q=your+job+search+terms&l=your+location"
+  start: 0
+  end: 100  # How many pages to search (each page has ~10-15 jobs)
+
+camoufox:
+  user_data_dir: "user_data_dir"
+  language: "www"  # Use "www" for US, "uk" for UK, "fr" for France, etc.
+
+# Timing configuration for human-like behavior and performance optimization
+timing:
+  page_load: 3          # Base delay after page loads (seconds)
+  between_applications: 5  # Delay between job applications (seconds)
+  element_wait: 2       # Base wait time for element detection (seconds)
+  retry_delay: 5        # Base delay between retry attempts (seconds)
+  human_like_variation: 0.3  # Random variation percentage (0.0 = exact timing, 0.5 = ±50% variation)
+
+# Question answering configuration
+question_answering:
+  enabled: true         # Enable/disable question answering feature
+  mode: "hybrid"        # Options: "stored_only", "hybrid", "ai_only"
+  on_unknown_question: "ai_then_skip"  # Options: "pause_and_beep", "ai_then_skip", "skip_immediately"
+  fuzzy_match_threshold: 80  # Percentage similarity for fuzzy matching (0-100)
+
+  # OpenRouter API configuration
+  openrouter:
+    api_key: "your_api_key_here"  # Get your API key from https://openrouter.ai/
+    model: "anthropic/claude-3.5-sonnet"  # OpenRouter model to use
+    enabled: true       # Enable/disable AI answering
+    timeout: 30         # API request timeout in seconds
+
+  # Resume context for AI (paste your resume content as text for better AI responses)
+  resume_context: |
+    [Your Full Name]
+    [Your Email] | [Your Phone] | [Your City, State]
+
+    SUMMARY:
+    [Brief professional summary describing your experience and skills]
+
+    EXPERIENCE:
+    [Most Recent Job Title] at [Company Name] (Start Year - End Year)
+    - Key achievement or responsibility 1
+    - Key achievement or responsibility 2
+    - Key achievement or responsibility 3
+
+    [Previous Job Title] at [Previous Company] (Start Year - End Year)
+    - Key achievement or responsibility 1
+    - Key achievement or responsibility 2
+
+    EDUCATION:
+    [Degree] in [Field of Study] from [University Name] (Graduation Year)
+
+    SKILLS:
+    [Technical skills, programming languages, tools, frameworks, etc.]
+
+    CERTIFICATIONS:
+    [Any relevant certifications with dates]
